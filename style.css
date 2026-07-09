@@ -3,7 +3,7 @@
 :root { 
     --dark: #050505; 
     --gold: #C5A059; 
-    --text: #ffffff; /* Letras blancas para mayor contraste */
+    --text: #ffffff;
 }
 
 body { 
@@ -22,26 +22,36 @@ body {
 
 .ledger { width: 100%; max-width: 600px; }
 
-/* Títulos con más presencia */
 header { border-bottom: 2px solid var(--gold); padding: 40px 0; text-align: center; }
 h1 { font-size: 3.5rem; margin: 0; color: #fff; letter-spacing: 2px; }
 
-/* Navegación más grande para dedos */
 .tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
 .tabs button { 
     background: rgba(255,255,255,0.05); border: 1px solid var(--gold); color: var(--gold); 
     padding: 12px 20px; cursor: pointer; font-family: 'Cormorant Garamond'; 
-    font-size: 1.2rem; border-radius: 4px;
+    font-size: 1.2rem; border-radius: 4px; transition: 0.3s;
 }
+.tabs button:hover { background: var(--gold); color: var(--dark); }
 
-/* Ítems: nombres de productos más grandes */
 .item { margin-top: 40px; border-bottom: 1px solid #333; padding-bottom: 20px; }
-.item-header h3 { font-size: 2.2rem; color: #fff; font-weight: 700; }
+.item-header h3 { font-size: 2.2rem; color: #fff; font-weight: 700; margin: 0; cursor: pointer; }
 
-/* Precios: resaltados con negrita y color oro */
-.variaciones { margin-top: 20px; }
+/* AQUÍ ESTÁ EL CAMBIO PARA LAS VARIANTES */
+.variaciones { margin-top: 20px; display: none; }
+.variaciones.active { display: block; animation: fadeIn 0.4s; }
+
 .row { 
     display: flex; justify-content: space-between; 
-    padding: 10px 0; font-size: 1.5rem; border-bottom: 1px dotted #222; 
+    padding: 15px 0; /* Más espacio para que sea elegante */
+    font-size: 1.6rem; /* Variantes más grandes */
+    border-bottom: 1px solid rgba(197, 160, 89, 0.3); /* Línea dorada sutil */
 }
-.row span:last-child { color: var(--gold); font-weight: 700; }
+
+.row span:first-child { font-style: italic; } /* Nombre de variante más elegante */
+.row span:last-child { 
+    color: var(--gold); 
+    font-weight: 700; 
+    font-family: sans-serif; /* Precio más legible */
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
