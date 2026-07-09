@@ -33,25 +33,30 @@ h1 { font-size: 3.5rem; margin: 0; color: #fff; letter-spacing: 2px; }
 }
 .tabs button:hover { background: var(--gold); color: var(--dark); }
 
+/* Animación Cinemática */
+@keyframes fadeInSlide {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+#menu-container {
+    animation: fadeInSlide 0.6s ease-out;
+}
+
 .item { margin-top: 40px; border-bottom: 1px solid #333; padding-bottom: 20px; }
 .item-header h3 { font-size: 2.2rem; color: #fff; font-weight: 700; margin: 0; cursor: pointer; }
 
-/* AQUÍ ESTÁ EL CAMBIO PARA LAS VARIANTES */
 .variaciones { margin-top: 20px; display: none; }
 .variaciones.active { display: block; animation: fadeIn 0.4s; }
 
 .row { 
     display: flex; justify-content: space-between; 
-    padding: 15px 0; /* Más espacio para que sea elegante */
-    font-size: 1.6rem; /* Variantes más grandes */
-    border-bottom: 1px solid rgba(197, 160, 89, 0.3); /* Línea dorada sutil */
+    padding: 15px 0; 
+    font-size: 1.6rem; 
+    border-bottom: 1px solid rgba(197, 160, 89, 0.3); 
 }
 
-.row span:first-child { font-style: italic; } /* Nombre de variante más elegante */
-.row span:last-child { 
-    color: var(--gold); 
-    font-weight: 700; 
-    font-family: sans-serif; /* Precio más legible */
-}
+.row span:first-child { font-style: italic; } 
+.row span:last-child { color: var(--gold); font-weight: 700; font-family: sans-serif; }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
