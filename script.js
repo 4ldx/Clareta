@@ -47,6 +47,12 @@ const menuData = {
 
 function render(cat) {
     const container = document.getElementById('menu-container');
+    
+    // Reinicio de animación
+    container.style.animation = 'none';
+    container.offsetHeight; 
+    container.style.animation = 'fadeInSlide 0.6s ease-out';
+    
     container.innerHTML = menuData[cat].map(item => `
         <div class="item">
             <div class="item-header" onclick="toggleItem(this)">
@@ -63,10 +69,7 @@ function toggleItem(el) {
     const allVariations = document.querySelectorAll('.variaciones');
     const target = el.nextElementSibling;
     
-    // Cierra todos los que no sean el seleccionado
     allVariations.forEach(v => { if(v !== target) v.classList.remove('active'); });
-    
-    // Abre el seleccionado
     target.classList.toggle('active');
 }
 
@@ -75,5 +78,4 @@ Object.keys(menuData).forEach((cat) => {
     tabs.innerHTML += `<button onclick="render('${cat}')">${cat}</button>`;
 });
 
-// Carga inicial
 render("Calientes");
