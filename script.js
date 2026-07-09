@@ -49,7 +49,7 @@ function render(cat) {
     const container = document.getElementById('menu-container');
     container.innerHTML = menuData[cat].map(item => `
         <div class="item">
-            <div class="item-header" onclick="this.nextElementSibling.classList.toggle('active')">
+            <div class="item-header" onclick="toggleItem(this)">
                 <h3>${item.n}</h3><span>▼</span>
             </div>
             <div class="variaciones">
@@ -59,10 +59,21 @@ function render(cat) {
     `).join('');
 }
 
+function toggleItem(el) {
+    const allVariations = document.querySelectorAll('.variaciones');
+    const target = el.nextElementSibling;
+    
+    // Cierra todos los que no sean el seleccionado
+    allVariations.forEach(v => { if(v !== target) v.classList.remove('active'); });
+    
+    // Abre el seleccionado
+    target.classList.toggle('active');
+}
+
 const tabs = document.getElementById('tabs');
 Object.keys(menuData).forEach((cat) => {
     tabs.innerHTML += `<button onclick="render('${cat}')">${cat}</button>`;
 });
 
-// Carga la primera categoría por defecto
+// Carga inicial
 render("Calientes");
